@@ -62,11 +62,8 @@ Program will output sorted list of roster contacts in form of "Alias: JID [Group
         sys.exit(1)
 
     try:
-        if len(args) < 3:
-            #password = raw_input("Enter your password: ")
-            password = getpass.getpass('Enter your password: ')
-        else:
-            password = args[2]
+        #password = raw_input("Enter your password: ")
+        password = getpass.getpass('Enter your password: ')
 
         auth = client.auth(user=login, password=password, resource='jabber-roster')
         if not auth:
@@ -77,12 +74,14 @@ Program will output sorted list of roster contacts in form of "Alias: JID [Group
         jids = roster.getItems()
 
         output = []
+		contact_list = []
 
         for jid in jids:
             name = roster.getName(jid)
             groups = roster.getGroups(jid)
             line = u'%s: %s [%s]' % (name or '', jid, ', '.join(groups) if groups else '')
             output.append(line)
+			contact_list.append([jid,name,groups])
         output.sort(cmp=locale.strcoll)
 
         for line in output:
@@ -93,7 +92,35 @@ Program will output sorted list of roster contacts in form of "Alias: JID [Group
     finally:
         client.disconnect()
 
+	if len(args)>2:
 
+	login_destination = args[2]
+	server_destination = args[3]
+    client_destination = xmpp.Client(server_destionation, debug='always' if opts.debug else None)
+    client_destination.connect()
+    
+	if not client_destination.isConnected():
+        print >> sys.stderr, "Could not connect to %s" % server_destination
+        sys.exit(1)
+
+	try:
+        password_destination = getpass.getpass('Enter your password for destination server: ')
+
+        auth = client.auth(user=login_destination, password=password_destination, resource='jabber-roster')
+        if not auth:
+            print >> sys.stderr, "Authentication failed on server %s" % server_destination
+            sys.exit(2)
+
+		roster = client_destination.getRoster()
+
+        for contact in contact_list:
+			
+            roster.SetItem(contact[0],contact[1],contact[2])
+			
+
+
+    finally:
+        client.disconnect()
 
 def main():
     '''Main program entry point'''
