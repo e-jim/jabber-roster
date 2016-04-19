@@ -119,6 +119,7 @@ Program will output sorted list of roster contacts in form of "Alias: JID [Group
 
                 print contact            
                 roster_destination.setItem(contact[0],contact[1],contact[2])
+                roster_destination.Subscribe(contact[0])
             
 
 
