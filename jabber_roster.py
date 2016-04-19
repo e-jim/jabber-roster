@@ -19,6 +19,11 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
+#
+#	Work in progress par e-Jim sous la même licence.
+#
+
 import sys, getpass, locale, warnings
 from optparse import OptionParser
 # ignore deprecation warnings coming from xmpp, we can't do anything about it
@@ -28,7 +33,7 @@ import xmpp
 # set user's default locale
 locale.setlocale(locale.LC_ALL, '')
 
-version = '0.1.1'
+version = '0.1.2.0'
 
 def main_run():
     '''Execute the whole program'''
