@@ -38,8 +38,9 @@ version = '0.1.2.0'
 def main_run():
     '''Execute the whole program'''
 
-    usage = '''Usage: %prog <server> <login> [password]
-Example: %prog jabber.org john.doe password
+    usage = '''Usage: %prog <server> <login> [<second server> <second login>]
+Example: %prog jabber.org john.doe
+If a second server is set, the roster from the first server will be migrated to the second one.
 Program will output sorted list of roster contacts in form of "Alias: JID [Groups]"'''
 
     parser = OptionParser(usage=usage, version=version)
@@ -91,6 +92,7 @@ Program will output sorted list of roster contacts in form of "Alias: JID [Group
 
     finally:
         client.disconnect()
+
 
 
 def main():
