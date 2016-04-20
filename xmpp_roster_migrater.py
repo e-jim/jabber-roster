@@ -40,7 +40,7 @@ def main_run():
 
     usage = '''Usage: %prog <server> <login> [<second server> <second login>]
 Example: %prog jabber.org john.doe
-If a second server is set, the roster from the first server will be migrated to the second one.
+If a second server is set, the roster from the first server will be migrated to the second one and contacts will be invited (subscribed to) from the second account.
 Program will output sorted list of roster contacts in form of "Alias: JID [Groups]"'''
 
     parser = OptionParser(usage=usage, version=version)
