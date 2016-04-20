@@ -20,23 +20,23 @@
 
 from setuptools import setup, find_packages
 
-setup(name='jabber-roster',
-      version='0.1.1',
-      py_modules=['jabber_roster'],
+setup(name='xmpp-roster-migrater',
+      version='0.1.2',
+      py_modules=['xmpp_roster_migrater'],
       entry_points = {
-        'console_scripts': ['jabber-roster = jabber_roster:main'],
+        'console_scripts': ['xmpp-roster-migrater = xmpp_roster_migrater:main'],
       },
       install_requires=['xmpppy'],
-      author='Kamil Paral',
-      author_email='kamil.paral@gmail.com',
-      description='Tool for listing Jabber roster contacts',
-      long_description='A simple Python tool for listing your Jabber roster contacts. You can use it to easily backup list of your buddies.',
+      author='e-Jim',
+      author_email='jim@e-jim.be',
+      description='Tool for listing and exporting XMPP roster contacts',
+      long_description='A simple Python tool for listing and exporting your XMPP roster contacts. You can use it to easily backup list of your buddies.',
       keywords='Jabber XMPP roster contacts commandline',
       license='GNU Affero GPL v3',
-      url='https://github.com/kparal/jabber-roster',
-      download_url='https://github.com/kparal/jabber-roster/downloads',
-      classifiers=[
-        'Development Status :: 5 - Production/Stable',
+      url='https://github.com/e-jim/xmpp-roster-migrater',
+      download_url='https://github.com/e-jim/xmpp-roster-migrater/downloads',
+      classifiers=
+        'Development Status :: 4  - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
